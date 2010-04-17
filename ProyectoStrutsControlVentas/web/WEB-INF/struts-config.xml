@@ -7,7 +7,8 @@
 
 <struts-config>
     <form-beans>
-    
+        <form-bean name="LoginForm" type="pe.edu.upc.dew.controlventas.struts.forms.LoginForm" />
+        <form-bean name="ClientForm" type="pe.edu.upc.dew.controlventas.struts.forms.ClientForm" />
     </form-beans>
     
     <global-exceptions>
@@ -20,6 +21,27 @@
 
     <action-mappings>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+        <action input="/login.jsp" name="LoginForm" path="/Login" scope="request" type="pe.edu.upc.dew.controlventas.struts.action.LoginAction" >
+            <forward name="success" path="/home.jsp" />
+            <forward name="failure" path="/login.jsp" />
+        </action>
+        <action name="LogoutForm" path="/Logout" scope="request" type="pe.edu.upc.dew.controlventas.struts.action.LogoutAction" >
+            <forward name="success" path="/login.jsp" />
+        </action>
+        <action name="ClientForm" path="/Client" scope="request" type="pe.edu.upc.dew.controlventas.struts.action.ClientAction" >
+            <forward name="success" path="/clientList.jsp" />
+            <forward name="list" path="/Client.do" />
+            <forward name="failure" path="/home.jsp" />
+        </action>
+        <action name="CarroComprasForm" path="/CarroCompras" scope="request" type="pe.edu.upc.dew.controlventas.struts.action.CarroComprasAction" >
+            <forward name="success" path="/carroCompra.jsp" />
+            <forward name="list" path="/CarroCompra.do" />
+            <forward name="failure" path="/home.jsp" />
+        </action>
+        <action name="VentaForm"   input="/carroCompra.jsp"      path="/Ventas"        scope="request" type="pe.edu.upc.dew.controlventas.struts.action.VentaAction" >
+            <forward name="success" path="/compraExito.jsp" />
+            <forward name="failure" path="/carroCompra.jsp" />
+        </action>
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

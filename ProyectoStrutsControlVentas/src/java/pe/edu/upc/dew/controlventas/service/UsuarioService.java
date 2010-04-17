@@ -14,8 +14,8 @@ import pe.edu.upc.dew.controlventas.model.Usuario;
 public class UsuarioService {
     private UsuarioDao usuarioDao;
 
-    public UsuarioService(){
-        this.usuarioDao = new UsuarioDao();
+    public void setUsuarioDao(UsuarioDao usuarioDao) {
+        this.usuarioDao = usuarioDao;
     }
 
     public Usuario getUsuarioPorUsername(String username) {

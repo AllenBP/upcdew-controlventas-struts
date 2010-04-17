@@ -5,45 +5,39 @@
 package pe.edu.upc.dew.controlventas.service;
 
 import java.util.List;
-import javax.servlet.http.HttpSession;
 import pe.edu.upc.dew.controlventas.dao.ClienteDao;
+import pe.edu.upc.dew.controlventas.dao.LineaCreditoDao;
 import pe.edu.upc.dew.controlventas.model.Cliente;
-import pe.edu.upc.dew.controlventas.model.LineaCredito;
 
 /**
  *
  * @author u814296
  */
 public class ClienteService {
-    private ClienteDao ClienteDao;
-    private HttpSession session;
 
-    public ClienteService(HttpSession _session){
+    private ClienteDao clienteDao;
+    private LineaCreditoDao lineaCreditoDao;
 
-        session = _session;
+    public void setClienteDao(ClienteDao clienteDao) {
+        this.clienteDao = clienteDao;
+    }
 
-        if(session.getAttribute("clientesSession")==null){
-            this.ClienteDao = new ClienteDao();
-        }else{
-            this.ClienteDao = (ClienteDao) session.getAttribute("clientesSession");
-        }
-
+    public void setLineaCreditoDao(LineaCreditoDao lineaCreditoDao) {
+        this.lineaCreditoDao = lineaCreditoDao;
     }
 
     public void addCliente(Cliente cliente) {
 
         double credito = cliente.getLineaCredito().getCreditoReal();
-        
-        cliente.setLineaCredito((new LineaCreditoService()).buscarLineaCredito(credito));
+
+        cliente.setLineaCredito(lineaCreditoDao.buscarLineaCredito(credito));
         cliente.getLineaCredito().setCreditoReal(credito);
 
-        ClienteDao.addCliente(cliente);
-        session.setAttribute("clientesSession", ClienteDao);
+        clienteDao.addCliente(cliente);
 
     }
 
     public List<Cliente> getClientes() {
-        return ClienteDao.getClientes();
+        return clienteDao.getClientes();
     }
-
 }

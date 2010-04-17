@@ -15,9 +15,8 @@ import pe.edu.upc.dew.controlventas.model.ParamRecomendacion;
 public class LineaCreditoService {
     private LineaCreditoDao lineaCreditoDao;
 
-
-    public LineaCreditoService(){
-        lineaCreditoDao = new LineaCreditoDao();
+    public void setLineaCreditoDao(LineaCreditoDao lineaCreditoDao) {
+        this.lineaCreditoDao = lineaCreditoDao;
     }
 
     public LineaCredito buscarLineaCredito(double sueldo){

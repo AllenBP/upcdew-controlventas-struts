@@ -1,13 +1,19 @@
 package pe.edu.upc.dew.controlventas.model;
 
 /**
- * Usuario que ingresa a la aplicacion
+ * Clase objeto de datos del Tipo de documento
  *
  * @author u814296
  */
 public class TipoDocumento {
 
+    /**
+     * Codigo del tipo de documento
+     */
     private int id;
+    /**
+     * Nombre del tipo de documento
+     */
     private String nombre;
 
     public int getId() {

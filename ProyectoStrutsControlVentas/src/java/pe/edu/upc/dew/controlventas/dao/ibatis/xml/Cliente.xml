@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Cliente">
+
+    <typeAlias alias="ClienteBean" type="pe.edu.upc.dew.controlventas.model.Cliente"/>
+    <typeAlias alias="LineaCreditoBean" type="pe.edu.upc.dew.controlventas.model.LineaCredito"/>
+
+    <resultMap id="result" class="ClienteBean">
+        <result property="idUsuario" column="idCliente" />
+        <result property="username" column="userName" />
+        <result property="password" column="password" />
+        <result property="nombre" column="nombre" />
+        <result property="apellidoPaterno" column="apePaterno" />
+        <result property="apellidoMaterno" column="apeMaterno" />
+        <result property="email" column="email" />
+        <result property="fechaNacimiento" column="fechanac" />
+        <result property="lineaCredito" column="credito" nullValue="null" select="buscarLineaCredito" javaType="LineaCreditoBean" />
+        <result property="lineaCredito.creditoReal" column="credito" />
+    </resultMap>
+
+    <select id="getClientes" resultMap="result" cacheModel="">
+        <![CDATA[SELECT * FROM CLIENTE]]>
+    </select>
+
+    <insert id="addCliente" parameterClass="ClienteBean">
+        <selectKey keyProperty="idUsuario" resultClass="java.lang.Integer">
+           <![CDATA[
+            select (max(idcliente) + 1) from cliente
+            ]]>
+        </selectKey>
+   <![CDATA[
+        INSERT INTO cliente(
+            idCliente,nombre, apepaterno, apematerno, email, fechanac, credito,
+            username, "password", idrol)
+        VALUES (#idUsuario#,#nombre#, #apellidoPaterno#, #apellidoMaterno#, #email#, #fechaNacimiento#,
+                #lineaCredito.creditoReal#,#username#, #password#, 2);
+        ]]>
+    </insert>
+
+
+
+    <!--procedure id="getClientes" resultMap="result" cacheModel="">
+        { call proc_cliente_select() }
+    </procedure-->
+
+</sqlMap>

@@ -17,6 +17,10 @@
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>EstadoCuentaServlet</servlet-name>
+        <servlet-class>pe.edu.upc.dew.controlventas.controller.EstadoCuentaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -38,6 +42,10 @@
         <servlet-name>LineaCreditoServlet</servlet-name>
         <servlet-class>pe.edu.upc.dew.controlventas.controller.LineaCreditoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CarroComprasServlet</servlet-name>
+        <servlet-class>pe.edu.upc.dew.controlventas.controller.CarroComprasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -55,13 +63,22 @@
         <url-pattern>/LineaCreditoServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>EstadoCuentaServlet</servlet-name>
+        <url-pattern>/EstadoCuentaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CarroComprasServlet</servlet-name>
+        <url-pattern>/CarroComprasServlet</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
     <jsp-config>
         <taglib>
