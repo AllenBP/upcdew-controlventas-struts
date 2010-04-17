@@ -1,0 +1,8 @@
+pe.edu.upc.dew.controlventas.controller
+pe.edu.upc.dew.controlventas.dao
+pe.edu.upc.dew.controlventas.dao.ibatis
+pe.edu.upc.dew.controlventas.factory
+pe.edu.upc.dew.controlventas.model
+pe.edu.upc.dew.controlventas.service
+pe.edu.upc.dew.controlventas.struts.action
+pe.edu.upc.dew.controlventas.struts.forms
