@@ -53,7 +53,7 @@ public class LoginAction extends org.apache.struts.action.Action {
         Usuario usuario = usuarioService.getUsuarioPorUsername(loginForm.getUserName());
         HttpSession session = request.getSession(true);
 
-        if (loginForm.getPassword().equals(loginForm.getPassword())) {
+        if (usuario!=null && usuario.getPassword().equals(loginForm.getPassword())) {
             session.setAttribute("userSession", usuario);
             return mapping.findForward(SUCCESS);
         } else {
