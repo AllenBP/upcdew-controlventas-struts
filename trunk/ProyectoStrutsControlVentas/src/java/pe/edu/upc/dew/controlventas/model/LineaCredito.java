@@ -1,16 +1,31 @@
 package pe.edu.upc.dew.controlventas.model;
 
 /**
- * Usuario que ingresa a la aplicacion
+ * Clase objeto de datos de la Linea de credito
  *
  * @author u814296
  */
 public class LineaCredito  {
 
+    /**
+     * Codigo de la linea de credito
+     */
     private int id;
+    /**
+     * Nombre de la linea de credito
+     */
     private String nombre;
+    /**
+     * Rango minimo de la linea de credito
+     */
     private double rangoMin;
+    /**
+     * Rango Maximo de la linea de credito
+     */
     private double rangoMax;
+    /**
+     * Credito Real
+     */
     private double creditoReal;
 
     public double getCreditoReal() {

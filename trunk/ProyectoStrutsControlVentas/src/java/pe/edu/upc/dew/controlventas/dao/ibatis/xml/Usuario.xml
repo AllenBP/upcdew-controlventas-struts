@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Usuario">
+
+    <typeAlias alias="UsuarioBean" type="pe.edu.upc.dew.controlventas.model.Usuario"/>
+    <typeAlias alias="RolBean" type="pe.edu.upc.dew.controlventas.model.Rol"/>
+
+    <resultMap id="result" class="UsuarioBean">
+        <result property="idUsuario" column="idCliente" />
+        <result property="username" column="userName" />
+        <result property="password" column="password" />
+        <result property="nombre" column="nombre" />
+        <result property="apellidoPaterno" column="apePaterno" />
+        <result property="apellidoMaterno" column="apeMaterno" />
+        <result property="roles" column="idRol" nullValue="null" select="getRoles" javaType="RolBean" />
+    </resultMap>
+
+    <resultMap id="resultRol" class="RolBean">
+        <result property="idRol" column="idPAGINA" />
+        <result property="nombre" column="nombre" />
+        <result property="url" column="url" />
+    </resultMap>
+
+    <select id="getUsuarioPorUsername" parameterClass="String" resultMap="result" cacheModel="">
+        <![CDATA[SELECT * FROM CLIENTE where userName=#username#]]>
+    </select>
+
+    <!--procedure id="getUsuarioPorUsername" parameterClass="String" resultMap="result" cacheModel="">
+        { call proc_cliente_select(#username#) }
+    </procedure-->
+
+    <select id="getRoles"  parameterClass="java.lang.Integer"  resultMap="resultRol" cacheModel="">
+        <![CDATA[SELECT P.idPAGINA, p.nombre, p.url  FROM ROL_PAGINA RP, PAGINA P WHERE RP.IDPAGINA=P.IDPAGINA AND RP.IDROL = #CODE# ]]>
+    </select>
+
+    <!--procedure id="getRoles"  parameterClass="long"  resultMap="resultRol" cacheModel="">
+        { call proc_roles_select(#code#) }
+    </procedure-->
+
+</sqlMap>

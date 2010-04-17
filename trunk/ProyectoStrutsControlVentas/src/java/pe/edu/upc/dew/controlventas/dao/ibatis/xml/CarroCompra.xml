@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CarroCompra">
+
+    <typeAlias alias="DetallePedidoBean" type="pe.edu.upc.dew.controlventas.model.DetallePedido"/>
+    <typeAlias alias="ProductoBean" type="pe.edu.upc.dew.controlventas.model.Producto"/>
+
+
+    <insert id="addCarroCompra" parameterClass="DetallePedidoBean">
+        <selectKey keyProperty="idtransaccion" resultClass="java.lang.Integer">
+           <![CDATA[
+            select (max(idtransaccion) + 1) from transaccion
+            ]]>
+        </selectKey>
+   <![CDATA[
+        INSERT INTO transaccion(
+            idtransaccion, idCliente, descripcion, compra, cuotascargadas, valorcuotacapital, valorcuotainteres, abono)
+        VALUES (#idtransaccion#,#idCliente#, #producto.nombre#, #producto.precio#, #cuotascargadas#, #valorcuotacapital#,
+                #valorcuotainteres#, #abono#);
+        ]]>
+    </insert>
+
+
+
+</sqlMap>

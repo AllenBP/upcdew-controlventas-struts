@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+    "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+    <sqlMap resource="pe/edu/upc/dew/controlventas/dao/ibatis/xml/Usuario.xml"/>
+    <sqlMap resource="pe/edu/upc/dew/controlventas/dao/ibatis/xml/Cliente.xml"/>
+    <sqlMap resource="pe/edu/upc/dew/controlventas/dao/ibatis/xml/LineaCredito.xml"/>
+    <sqlMap resource="pe/edu/upc/dew/controlventas/dao/ibatis/xml/CarroCompra.xml"/>
+
+</sqlMapConfig>

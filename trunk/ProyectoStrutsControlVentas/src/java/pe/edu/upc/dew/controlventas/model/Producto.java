@@ -6,12 +6,19 @@
 package pe.edu.upc.dew.controlventas.model;
 
 /**
+ * Clase objeto de datos del Producto
  *
  * @author u814296
  */
 public class Producto {
 
+    /**
+     * Nombre del producot
+     */
     private String nombre;
+    /**
+     * Precio del producto
+     */
     private double precio;
 
     public String getNombre() {

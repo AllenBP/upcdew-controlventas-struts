@@ -10,13 +10,33 @@ import java.util.List;
  */
 public class Usuario {
 
+    /**
+     * Código del usuario
+     */
     private Integer idUsuario;
+    /**
+     * Nick del usuario
+     */
     private String username;
+    /**
+     * Contraseña del usuario
+     */
     private String password;
+    /**
+     * Nombre del usuario
+     */
     private String nombre;
+    /**
+     * Apellido paterno del usuario
+     */
     private String apellidoPaterno;
+    /**
+     * Apellido materno del usuario
+     */
     private String apellidoMaterno;
-    /** Un usuario tiene muchos roles */
+    /**
+     * Lista de Roles del uusuario
+     */
     private List<Rol> roles;
 
     public Usuario() {

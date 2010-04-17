@@ -6,14 +6,27 @@
 package pe.edu.upc.dew.controlventas.model;
 
 /**
+ * Clase objeto de datos del parametros para la recomendacion de la linea de credito
  *
  * @author u814296
  */
 public class ParamRecomendacion {
 
-    private double sueldo;
+     /**
+     * Sueldo del cliente
+     */
+   private double sueldo;
+    /**
+     * El numero de tarjeta del cliente
+     */
     private int nroTarjeta;
+    /**
+     * Si el cliente tiene casa
+     */
     private String isCasa;
+    /**
+     *  Si el cliente tiene Auto
+     */
     private String isAuto;
 
     public String getIsAuto() {

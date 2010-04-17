@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Cliente">
+
+    <typeAlias alias="LineaCreditoBean" type="pe.edu.upc.dew.controlventas.model.LineaCredito"/>
+
+    <resultMap id="result" class="LineaCreditoBean">
+        <result property="id" column="idLineaCredito" />
+        <result property="nombre" column="nombre" />
+        <result property="rangoMin" column="minimo" />
+        <result property="rangoMax" column="maximo" />
+    </resultMap>
+
+    <select id="getLineasCreditos" resultMap="result" cacheModel="">
+        <![CDATA[SELECT * FROM LINEACREDITO]]>
+    </select>
+
+    <select id="buscarLineaCredito" parameterClass="java.lang.Double" resultMap="result" cacheModel="">
+        <![CDATA[SELECT * FROM LINEACREDITO WHERE minimo <= #credito# and #credito# <= maximo]]>
+    </select>
+
+
+</sqlMap>

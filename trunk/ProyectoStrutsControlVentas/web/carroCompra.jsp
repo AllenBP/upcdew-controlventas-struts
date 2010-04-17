@@ -1,5 +1,5 @@
 
-<%@page contentType="text/html" pageEncoding="UTF-8" session="true"  %>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -10,6 +10,7 @@
 --%>
 
 <jsp:useBean id="userSession" class="pe.edu.upc.dew.controlventas.model.Usuario" scope="session" />
+<jsp:useBean id="listaCarroDeCompras" class="pe.edu.upc.dew.controlventas.model.Pedido" scope="session" />
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -45,54 +46,45 @@
 
          <table border="0" cellspacing="1" cellpadding="2" width="558">
             <tbody>
-                <tr>
-                    <td width="30" align="middle">
+
+                <c:forEach items="${listaCarroDeCompras.detallesPedidos}" var="prod">
+
+                    <tr>
+                    <!--td width="30" align="middle">
                         <input id="nameChkComplemento_217" onclick="gblPag.clickComplemento(0,false)" value="217"
                             type="checkbox" />
-                    </td>
+                    </td-->
                     <td width="86" class="text">
                         &nbsp;</td>
                     <td width="290" class="text">
-                        Laptop
+                        ${prod.producto.nombre}
                     </td>
                     <td width="56" align="middle" class="text">
-                        S/.8.50
+                        S/.${prod.producto.precio}
                     </td>
                     <td width="52" align="middle">
                         &nbsp;</td>
                 </tr>
+
+                </c:forEach>
+
                 <tr>
-                    <td width="30" align="middle">
-                        <input id="nameChkComplemento_217" onclick="gblPag.clickComplemento(0,false)" value="217"
-                            type="checkbox" />
-                    </td>
-                    <td width="86" class="text">
+                    <td  width="86" class="text">
                         &nbsp;</td>
                     <td width="290" class="text">
-                        Laptop
+                        <B>TOTAL</B>
                     </td>
                     <td width="56" align="middle" class="text">
-                        S/.8.50
+                        S/.${listaCarroDeCompras.montoTotal}
                     </td>
                     <td width="52" align="middle">
                         &nbsp;</td>
                 </tr>
+
                 <tr>
-                    <td width="30" align="middle">
-                        <input id="nameChkComplemento_217" onclick="gblPag.clickComplemento(0,false)" value="217"
-                            type="checkbox" />
-                    </td>
-                    <td width="86" class="text">
-                        &nbsp;</td>
-                    <td width="290" class="text">
-                        Laptop
-                    </td>
-                    <td width="56" align="middle" class="text">
-                        S/.8.50
-                    </td>
-                    <td width="52" align="middle">
-                        &nbsp;</td>
+                    <td colspan="4"> <A href="/ProyectoStrutsControlVentas/Ventas.do" class="texto"> Aprobar compra</A> </td>
                 </tr>
+
             </tbody>
         </table>
 

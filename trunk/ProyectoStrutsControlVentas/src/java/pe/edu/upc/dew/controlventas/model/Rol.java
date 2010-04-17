@@ -1,13 +1,22 @@
 package pe.edu.upc.dew.controlventas.model;
 
 /**
- *
+ * Clase objeto de datos del Rol
  * @author u814296  
  */
 public class Rol {
 
+    /**
+     * Codigo del Rol
+     */
     private Integer idRol;
+    /**
+     * Nombre del Rol
+     */
     private String nombre;
+    /**
+     * Dirección enlace del Rol
+     */
     private String url;
 
     public String getUrl() {
